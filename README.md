@@ -5,12 +5,12 @@
 ## 프로젝트 명
 Moviin  
 
-
+<br/>
 
 ## 목적
 사용자의 위치와 취향에 따른 맞춤형 영화 정보를 제공함으로써 지속적으로 이용 가능한 챗봇 시스템을 구축한다.  
 
-
+<br/>
 
 ## 기능  
   1) 현재 영화 순위  
@@ -20,7 +20,7 @@ Moviin
      3-1) 재밌게 봤던 영화나 좋아하는 감독/배우등을 입력받아 비슷한 영화를 추천해줌.  
            혹은 현재 상영 영화중에 비슷한 것을 추천.  
 
-
+<br/>
 
 ## 개발
   1) 환경 : Github, vscode, HeidiSQL
@@ -30,4 +30,4 @@ Moviin
   5) 외부 API : 영화진흥위원회 API, Google geological API, Google places API, The Movie Database API
   6) 크롤링 : BeatifulSoup
 
-
+<br/>
