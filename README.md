@@ -1,12 +1,15 @@
 # 챗봇 프로젝트
 
 
+
 ## 프로젝트 명
 Moviin  
 
 
+
 ## 목적
 사용자의 위치와 취향에 따른 맞춤형 영화 정보를 제공함으로써 지속적으로 이용 가능한 챗봇 시스템을 구축한다.  
+
 
 
 ## 기능  
@@ -18,6 +21,7 @@ Moviin
            혹은 현재 상영 영화중에 비슷한 것을 추천.  
 
 
+
 ## 개발
   1) 환경 : Github, vscode, HeidiSQL
   2) 언어 : Python, MySQL, Html, CSS, Javascript...
@@ -25,3 +29,5 @@ Moviin
   4) 알고리즘 : RNN, CNN...
   5) 외부 API : 영화진흥위원회 API, Google geological API, Google places API, The Movie Database API
   6) 크롤링 : BeatifulSoup
+
+
