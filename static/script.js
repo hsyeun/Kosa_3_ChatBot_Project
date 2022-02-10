@@ -12,7 +12,7 @@ var sendForm = document.querySelector('#chatform'),
     input,
     previousInput,
     isReaction = false,
-    unkwnCommReaction = "I didn't quite get that.",
+    unkwnCommReaction = "무슨 말인지 모르겠어요 : (",
     chatbotButton = document.querySelector(".submit-button")
 
 sendForm.onkeydown = function(e){

@@ -12,8 +12,8 @@
             href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg"
             color="#111">
       <title>Moviin</title>
-      <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400" rel="stylesheet" type="text/css">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+      <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400" rel="stylesheet" type="text/css"> -->
+      <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"> -->
       <link rel="stylesheet" href="/static/style.css">
 
 </head>
@@ -21,31 +21,37 @@
 <body>
       <main class="page__main">
             <div class="block--background">
-              <div class="chatbot__overview">
-                <ul class="chatlist">
-                  <li class="bot__output bot__output--standard">Hey, I'm Navvy!</li>
-                  <li class="bot__output bot__output--standard">I will guide you through Mees' portfolio!</li>
-                  <li class="bot__output bot__output--standard">
-                    <span class="bot__output--second-sentence">You can ask me a bunch of things!</span>
-                    <ul>
-                      <li class="input__nested-list">Something <span class="bot__command">about</span> Mees</li>
-                      <li class="input__nested-list">Mees' <span class="bot__command">best work</span></li>
-                      <li class="input__nested-list">Maybe I could <span class="bot__command">help</span> (for more instructions)</li>
-                      <li class="input__nested-list">Type <span class="bot__command">commands</span> for a list of every command</li>
-                    </ul>
-                    You could also scroll down to see Mees' full portfolio
-                  </li>
-                </ul>
-              </div>
-              <div class="chatbox-area">
-                <form action="" id="chatform">
-                    <textarea placeholder="Talk to me!" class="chatbox" name="chatbox" resize: "none" minlength="2"></textarea>
-                    <input class="submit-button" type="submit" value="send">
-                </form>
-              </div>
-                              <div class="block--background"></div>
-        
-        </main>
+                  <div class="chatbot__head">
+                        <p class="title">Moviin</p>
+                  </div>
+                  <div class="chatbot__overview">
+                        <ul class="chatlist">
+                              <li class="bot__output bot__output--standard">만나서 반가워요. 저는 Moviin 입니다!</li>
+                              <li class="bot__output bot__output--standard">영화와 관련된 정보를 제공해드려요.</li>
+                              <li class="bot__output bot__output--standard">
+                                    <span class="bot__output--second-sentence">어떤 도움을 줄 수 있냐면요!</span>
+                                    <ul>
+                                          <li class="input__nested-list">현재의 <span class="bot__command">박스오피스</span> 순위
+                                          </li>
+                                          <li class="input__nested-list">현재 계신 곳에서 가까운 <span class="bot__command">영화관
+                                                      위치</span></li>
+                                          <li class="input__nested-list">취향에 맞는 <span class="bot__command">영화 추천</span>
+                                          </li>
+                                    </ul>
+                              </li>
+                              <li class="bot__output bot__output--standard">어떤게 궁금하신가요? : )</li>
+                        </ul>
+                  </div>
+                  <div class="chatbox-area">
+                        <form action="" id="chatform">
+                              <textarea placeholder="질문해주세요!" class="chatbox" name="chatbox" resize: "none"
+                                    minlength="2"></textarea>
+                              <input class="submit-button" type="submit" value="보내기">
+                        </form>
+                  </div>
+                  <div class="block--background"></div>
+
+      </main>
 
       <script src="/static/script.js"></script>
 

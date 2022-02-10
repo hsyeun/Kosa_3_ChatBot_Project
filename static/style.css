@@ -2,7 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-@import url("https://fonts.googleapis.com/css?family=Montserrat|Roboto");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Rowdies:wght@700&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -59,14 +59,35 @@ table {
 
 body {
   overflow-x: hidden;
-  font-family: "Roboto", sans-serif;
+  font-family: "Noto Sans KR", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   font-size: 1em;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   line-height: 1.45;
   background-color: #363636;
+}
+
+.chatbot__head {
+  background-color: #fff;
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: space-between;
+  width: 100%;
+  max-width: 35em;
+  min-height: 10vh;
+  max-height: 10vh;
+  margin: 0 auto;
+  padding: 1em;
+  /* padding-bottom: 0; */
+  border-radius: 8px 8px 0px 0px;
+}
+.chatbot__head .title {
+  margin: 0 auto;
+  font-family: 'Rowdies', cursive;
+  font-size: 2em;
+  color: #27ae60;
 }
 
 .chatbot__overview {
@@ -146,6 +167,10 @@ body {
   animation-delay: 1800ms;
   animation-play-state: running;
 }
+.chatlist .bot__output:nth-child(4) {
+  animation-delay: 2800ms;
+  animation-play-state: running;
+}
 .chatlist .bot__output--standard:last-child {
   display: block;
 }
@@ -173,7 +198,7 @@ body {
 .block--background {
   background-color: #363636;
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 #chatform {
@@ -184,7 +209,7 @@ body {
   margin: 0 auto;
   padding-top: 1em;
   font-size: 1em;
-  font-family: Helvetica;
+  font-family: 'Noto Sans KR', sans-serif;
 }
 @media screen and (max-width: 29em) {
   #chatform {
