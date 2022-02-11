@@ -1,6 +1,6 @@
-import requests
 import config
 import json
+import pandas as pd
 
 from datetime import datetime, timedelta
 from urllib.request import urlopen
@@ -21,7 +21,7 @@ class MovieList(object):
             return json.loads(fin.read().decode('utf-8'))
 
     def simplify(self, result):
-        print(result.get('movieListResult').get('movieList'))
+        # print(result.get('movieListResult').get('movieList'))
         return [
             {   'genre': entry.get('genreAlt'),
                 'name': entry.get('movieNm'),
@@ -31,5 +31,7 @@ class MovieList(object):
         ]
 
 box = MovieList(config.KOFIC_API_KEY)
-movies = box.serch_movies
-print(box.simplify(movies))
+movie = box.get_movies
+movies = box.simplify(movie)
+df = pd.DataFrame(movies)
+print(box.simplify(df))

@@ -20,7 +20,7 @@ class Boxoffice(object):
             return json.loads(fin.read().decode('utf-8'))
 
     def simplify(self, result):
-        print(result.get('boxOfficeResult').get('weeklyBoxOfficeList'))
+        # print(result.get('boxOfficeResult').get('weeklyBoxOfficeList'))
         return [
             {
                 'rank': entry.get('rank'),
