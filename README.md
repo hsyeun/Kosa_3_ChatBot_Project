@@ -33,8 +33,8 @@ Moviin
   * 환경 : Github, vscode, HeidiSQL
   * 언어 : Python, MySQL, Html, CSS, Javascript...
   * 프레임워크 : Flask
+  * 크롤링 : BeatifulSoup, selenium
   * 알고리즘 : RNN, CNN...
   * 외부 API : 영화진흥위원회 API, Google geological API, Google places API, The Movie Database API
-  * 크롤링 : BeatifulSoup, selenium
 
 <br/>
