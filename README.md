@@ -34,7 +34,7 @@ Moviin
   * 언어 : Python, MySQL, Html, CSS, Javascript...
   * 프레임워크 : Flask
   * 크롤링 : BeatifulSoup, selenium
-  * 알고리즘 : RNN, CNN...
+  * 알고리즘 : 양방향 LSTM
   * 외부 API : 영화진흥위원회 API, Google geological API, Google places API, The Movie Database API
 
 <br/>
