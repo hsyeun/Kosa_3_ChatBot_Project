@@ -4,11 +4,6 @@ import json
 from datetime import datetime, timedelta
 from urllib.request import urlopen
 import pandas as pd
-import tensorflow as tf
-
-from tensorflow.keras import preprocessing
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
 
 # 영화목록 받아오기
 class Boxoffice(object):
@@ -41,7 +36,7 @@ movies = box.simplify(movie)
 df = pd.DataFrame(movies)
 print(df.head(10))
 
-rank = df['rank'].tolist()
-name = df['name'].tolist()
+
+
 
 
