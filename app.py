@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, jsonify, abort
+# from app import create_app, socketio  # 웹소켓
 import socket
 import json
 
@@ -7,6 +8,7 @@ host = "127.0.0.1"
 port = 5050
 
 # Flask 애플리케이션
+# app = create_app(debug=True)  # 웹소켓
 app = Flask(__name__)
 
 # 챗봇 엔진 서버와 통신
@@ -32,18 +34,19 @@ def get_answer_from_engine(bottype, query):
 
       return ret_data
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def open():
-      return render_template("index.html")
+      return render_template("index.html", **locals())
 
-@app.route('/query/<bot_type>', methods=['POST'])
+@app.route('/query/<bot_type>', methods=["GET", "POST"])
 def query(bot_type):
       body = request.get_json()
 
       try:
-            if bot_type == 'TEST':
-                  # API 테스트
-                  ret = get_answer_from_engine(bottype=bot_type, query=body['query'])
+            if bot_type == 'MOVIIN':
+                  body = request.get_json()
+                  utterance = body['userRequest']['utterance']
+                  ret = get_answer_from_engine(bottype=bot_type, query=utterance)
                   return jsonify(ret)
             else:
                   abort(404)
@@ -53,4 +56,5 @@ def query(bot_type):
 
 
 if __name__ == '__main__':
+      # socketio.run(app)  # 웹소켓
       app.run(host='0.0.0.0', debug=True)
