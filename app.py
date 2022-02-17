@@ -38,7 +38,7 @@ def get_answer_from_engine(bottype, query):
 def open():
       return render_template("index.html", **locals())
 
-@app.route('/query/<bot_type>', methods=["GET", "POST"])
+@app.route('/<bot_type>', methods=["GET", "POST"])
 def query(bot_type):
       body = request.get_json()
 
