@@ -154,6 +154,7 @@ function unknownCommand(unkwnCommReaction) {
   animationCounter = 1;
 }
 
+// 답변 기능
 function responseText(e) {
 
   var response = document.createElement('li');
@@ -176,26 +177,27 @@ function responseText(e) {
   }, 0)
 }
 
-function responseImg(e) {
-  var image = new Image();
+// 이미지 답변
+// function responseImg(e) {
+//   var image = new Image();
 
-  image.classList.add('bot__output');
-  //Custom class for styling
-  image.classList.add('bot__outputImage');
-  //Gets the image
-  image.src = "/images/"+e;
-  chatList.appendChild(image);
+//   image.classList.add('bot__output');
+//   //Custom class for styling
+//   image.classList.add('bot__outputImage');
+//   //Gets the image
+//   image.src = "/images/"+e;
+//   chatList.appendChild(image);
 
-  animateBotOutput()
-  if(image.completed) {
-    chatList.scrollTop = chatList.scrollTop + image.scrollHeight;
-  }
-  else {
-    image.addEventListener('load', function(){
-      chatList.scrollTop = chatList.scrollTop + image.scrollHeight;
-    })
-  }
-}
+//   animateBotOutput()
+//   if(image.completed) {
+//     chatList.scrollTop = chatList.scrollTop + image.scrollHeight;
+//   }
+//   else {
+//     image.addEventListener('load', function(){
+//       chatList.scrollTop = chatList.scrollTop + image.scrollHeight;
+//     })
+//   }
+// }
 
 //change to SCSS loop
 function animateBotOutput() {

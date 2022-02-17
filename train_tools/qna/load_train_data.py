@@ -26,9 +26,9 @@ def insert_data(db, xls_row):
     intent, ner, query, answer, answer_img_url = xls_row
 
     sql = '''
-        INSERT chatbot_train_data(intent, ner, query, answer, answer_image) 
+        INSERT chatbot_train_data(intent, ner, query, answer) 
         values(
-         '%s', '%s', '%s', '%s', '%s'
+         '%s', '%s', '%s', '%s'
         )
     ''' % (intent.value, ner.value, query.value, answer.value, answer_img_url.value)
 
