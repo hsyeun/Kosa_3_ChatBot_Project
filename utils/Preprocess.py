@@ -4,9 +4,9 @@ import jpype
 
 
 class Preprocess:
-    def __init__(self, word2index_dic='', userdic=None):
+    def __init__(self, word2index_dic='./chatbot_dict1.bin', userdic='./utils/user_dict.tsv'):
         # 단어 인덱스 사전 불러오기
-        if(word2index_dic != ''):
+        if(word2index_dic != './chatbot_dict1.bin'):
             f = open(word2index_dic, "rb")
             self.word_index = pickle.load(f)
             f.close()
