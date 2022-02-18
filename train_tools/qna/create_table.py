@@ -1,5 +1,5 @@
 import pymysql
-from config.DatabaseConfig import *
+from Config.DatabaseConfig import *
 
 db = None
 try:
@@ -23,16 +23,16 @@ try:
     # ENGINE = InnoDB DEFAULT CHARSET=utf8
     # '''
 
-    # sql_mv = '''
-    #   CREATE TABLE IF NOT EXISTS `movie_data` (
-    #   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    #   `intent` VARCHAR(45) NULL,
-    #   `ner` VARCHAR(1024) NULL,
-    #   `query` TEXT NULL,
-    #   `answer` TEXT NOT NULL,
-    #   PRIMARY KEY (`id`))
-    # ENGINE = InnoDB DEFAULT CHARSET=utf8
-    # '''
+    sql_mv = '''
+      CREATE TABLE IF NOT EXISTS `movie_data` (
+      `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+      `movie_title` VARCHAR(200) NOT NULL,
+      `genre` VARCHAR(100) NOT NULL,
+      `director` VARCHAR(100) NULL,
+      `actor` TEXT NULL,
+      PRIMARY KEY (`id`))
+    ENGINE = InnoDB DEFAULT CHARSET=utf8
+    '''
 
     sql_th = '''
       CREATE TABLE IF NOT EXISTS `theater_data` (
@@ -48,7 +48,7 @@ try:
 
     # 테이블 생성
     with db.cursor() as cursor:
-        cursor.execute(sql_th)
+        cursor.execute(sql_mv)
 
 except Exception as e:
     print(e)

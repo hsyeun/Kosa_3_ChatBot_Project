@@ -1,21 +1,23 @@
+from wsgiref.validate import WSGIWarning
 import pymysql
 import openpyxl
+import os
 
-from config.DatabaseConfig import * # DB 접속 정보 불러오기
+from Config.DatabaseConfig import * # DB 접속 정보 불러오기
 
 
 # 학습 데이터 초기화
 def all_clear_train_data(db):
     # 기존 학습 데이터 삭제
     sql = '''
-            delete from theater_data
+            delete from movie_data
         '''
     with db.cursor() as cursor:
         cursor.execute(sql)
 
     # auto increment 초기화
     sql = '''
-    ALTER TABLE theater_data AUTO_INCREMENT=1
+    ALTER TABLE movie_data AUTO_INCREMENT=1
     '''
     with db.cursor() as cursor:
         cursor.execute(sql)
@@ -23,14 +25,14 @@ def all_clear_train_data(db):
 
 # db에 데이터 저장
 def insert_data(db, xls_row):
-    do, si, theater_name, address, tell = xls_row
+    movie_title, genre, director, actor = xls_row
 
     sql = '''
-        INSERT theater_data(do, si, theater_name, address, tell) 
+        INSERT movie_data(movie_title, genre, director, actor) 
         values(
-         '%s', '%s', '%s', '%s', '%s'
+         '%s', '%s', '%s', '%s'
         )
-    ''' % (do.value, si.value, theater_name.value, address.value, tell.value)
+    ''' % (movie_title.value, genre.value, director.value, actor.value)
 
     # 엑셀에서 불러온 cell에 데이터가 없는 경우, null 로 치환
     sql = sql.replace("'None'", "null")
@@ -41,7 +43,7 @@ def insert_data(db, xls_row):
         db.commit()
 
 
-train_file = '/MovieTheater_final.xlsx'
+path = 'C:/dev/Project_chatbot/Kosa_3_ChatBot_Project/train_tools/qna/movie_info'
 db = None
 try:
     db = pymysql.connect(
@@ -55,19 +57,19 @@ try:
     # 기존 학습 데이터 초기화
     all_clear_train_data(db)
 
-    # df = pd.read_excel(train_file)
-    # print(df.info())
 
-    # 학습 엑셀 파일 불러오기
-    wb = openpyxl.load_workbook(train_file)
-    ws = wb.sheetnames
-    print(ws)
-    sheet = wb['cgv']
-    for row in sheet.iter_rows(min_row=2): # 해더는 불러오지 않음
-        # 데이터 저장
-        insert_data(db, row)
+    # 엑셀 파일 여러개 db에 저장하기
+    files = os.listdir(path)
+    for file in files:
+        wb = openpyxl.load_workbook(path + '/' + file)
+        ws = wb.active
+
+        for row in ws.iter_rows(min_row=1, min_col=2):  # 첫번째 열(번호)은 불러오지 않음
+            # 데이터 저장
+            insert_data(db, row)
 
     wb.close()
+    print('insert 성공')
 
 except Exception as e:
     print(e)

@@ -1,7 +1,7 @@
 import threading
 import json
 
-from config.DatabaseConfig import *
+from Config.DatabaseConfig import *
 from utils.Database import Database
 from utils.BotServer import BotServer
 from utils.Preprocess import Preprocess

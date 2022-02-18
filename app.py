@@ -38,15 +38,13 @@ def get_answer_from_engine(bottype, query):
 def open():
       return render_template("index.html", **locals())
 
-@app.route('/<bot_type>', methods=["GET", "POST"])
+@app.route('/query/<bot_type>', methods=["POST"])
 def query(bot_type):
       body = request.get_json()
 
       try:
             if bot_type == 'MOVIIN':
-                  body = request.get_json()
-                  utterance = body['userRequest']['utterance']
-                  ret = get_answer_from_engine(bottype=bot_type, query=utterance)
+                  ret = get_answer_from_engine(bottype=bot_type, query=body['query'])
                   return jsonify(ret)
             else:
                   abort(404)
