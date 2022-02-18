@@ -60,9 +60,9 @@ var checkInput = function(input) {
   hasCorrectInput = false;
   isReaction = false;
   //Checks all text values in possibleInput
-  for(var textVal in possibleInput){
+  for(var textVal in possibleInput) {
     //If user reacts with "yes" and the previous input was in textVal
-    if(input == "yes" || input.indexOf("yes") >= 0){
+    if(input == 'yes' || input.indexOf('yes') >= 0){
       if(previousInput == textVal) {
         console.log("sausigheid");
 
@@ -71,7 +71,7 @@ var checkInput = function(input) {
         botResponse(textVal);
       }
     }
-    if(input == "no" && previousInput == textVal){
+    if(input == 'no' && previousInput == textVal){
       unkwnCommReaction = "For a list of commands type: Commands";
       unknownCommand("I'm sorry to hear that :(")
       unknownCommand(unkwnCommReaction);
@@ -79,18 +79,41 @@ var checkInput = function(input) {
     }
     //Is a word of the input also in possibleInput object?
     if(input == textVal || input.indexOf(textVal) >=0 && isReaction == false){
-			console.log("succes");
+			console.log("success");
       hasCorrectInput = true;
       botResponse(textVal);
 		}
 	}
   //When input is not in possibleInput
   if(hasCorrectInput == false){
-    console.log("failed");
-    unknownCommand(unkwnCommReaction);
+    //console.log("failed");
+    //unknownCommand(unkwnCommReaction);
+
+    requestToServer(input)
+
     hasCorrectInput = true;
   }
 }
+
+function requestToServer(input){
+    $.ajax({
+      url: 'http://127.0.0.1:5000/message',
+      async: true,
+      type: 'POST',
+      data: JSON.stringify({
+        message: input
+      }),
+      dataType: 'text',
+      contentType: 'application/json; charset=euc-kr',
+      success: function (response) {
+        botResponse(response)
+      },
+      error: function (e) {
+        botResponse('데이터 처리가 실패했습니다. 관리자에게 문의하세요.')
+      }
+    })
+}
+
 
 // debugger;
 
@@ -99,9 +122,11 @@ function botResponse(textVal) {
   // previousInput = input;
 
   //create response bubble
+  
   var userBubble = document.createElement('li');
   userBubble.classList.add('bot__output');
 
+  
   if(isReaction == true){
     if (typeof reactionInput[textVal] === "function") {
     //adds input of textarea to chatbubble list item
@@ -118,7 +143,7 @@ function botResponse(textVal) {
     //adds input of textarea to chatbubble list item
       userBubble.innerHTML = possibleInput[textVal]();
     } else {
-      userBubble.innerHTML = possibleInput[textVal];
+      userBubble.innerHTML = responseText(textVal);
     }
   }
   //add list item to chatlist
@@ -168,12 +193,12 @@ function responseText(e) {
 
   animateBotOutput();
 
-  console.log(response.clientHeight);
+  //console.log(response.clientHeight);
 
   //Sets chatlist scroll to bottom
   setTimeout(function(){
     chatList.scrollTop = chatList.scrollHeight;
-    console.log(response.clientHeight);
+    //console.log(response.clientHeight);
   }, 0)
 }
 
@@ -307,5 +332,5 @@ var reactionInput = {
     responseText("Combine Motion Design with Front-End");
     animationCounter = 1;
     return
-    }
+  }
 }
