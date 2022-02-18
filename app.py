@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from base64 import encode
 from quopri import decodestring
 from flask import Flask, render_template, request, jsonify, abort, make_response
@@ -6,12 +5,10 @@ from flask import Flask, render_template, request, jsonify, abort, make_response
 import socket
 import json
 from flask_cors import CORS
-=======
 from flask import Flask, render_template, request, jsonify, abort
 # from app import create_app, socketio  # 웹소켓
 import socket
 import json
->>>>>>> d5dd420241fb34fedabd8bf69b5b576c627a15a3
 
 # 챗봇 엔진 서버 접속 정보
 host = "127.0.0.1"
@@ -22,11 +19,8 @@ port = 5050
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
 
-<<<<<<< HEAD
 CORS(app)
 
-=======
->>>>>>> d5dd420241fb34fedabd8bf69b5b576c627a15a3
 # 챗봇 엔진 서버와 통신
 def get_answer_from_engine(bottype, query):
       # 챗봇 엔진 서버 연결
@@ -54,23 +48,17 @@ def get_answer_from_engine(bottype, query):
 def open():
       return render_template("index.html", **locals())
 
-<<<<<<< HEAD
 @app.route('/<bot_type>', methods=["GET", "POST"])
-=======
 @app.route('/query/<bot_type>', methods=["POST"])
->>>>>>> d5dd420241fb34fedabd8bf69b5b576c627a15a3
 def query(bot_type):
       body = request.get_json()
 
       try:
             if bot_type == 'MOVIIN':
-<<<<<<< HEAD
                   body = request.get_json()
                   utterance = body['userRequest']['utterance']
                   ret = get_answer_from_engine(bottype=bot_type, query=utterance)
-=======
                   ret = get_answer_from_engine(bottype=bot_type, query=body['query'])
->>>>>>> d5dd420241fb34fedabd8bf69b5b576c627a15a3
                   return jsonify(ret)
             else:
                   abort(404)
@@ -78,7 +66,6 @@ def query(bot_type):
       except Exception as ex:
             abort(500)
 
-<<<<<<< HEAD
 @app.route('/message', methods=["POST"])
 def send_answer():
       question = request.get_json()['message']
@@ -86,8 +73,6 @@ def send_answer():
       question += '를 서버에서 로직으로 처리'
       
       return make_response(question)
-=======
->>>>>>> d5dd420241fb34fedabd8bf69b5b576c627a15a3
 
 if __name__ == '__main__':
       # socketio.run(app)  # 웹소켓
