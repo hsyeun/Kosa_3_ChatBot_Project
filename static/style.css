@@ -149,7 +149,7 @@ body {
 .chatlist .bot__output:last-child {
   display: none;
 }
-.chatlist .bot__command {
+.chatlist .bot__command, .title__green {
   color: #f5f5f5;
   color: #27ae60;
   font-weight: 600;
