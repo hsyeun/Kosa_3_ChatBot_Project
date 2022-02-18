@@ -64,7 +64,7 @@ try:
         wb = openpyxl.load_workbook(path + '/' + file)
         ws = wb.active
 
-        for row in ws.iter_rows(min_row=1, min_col=2):  # 첫번째 열(번호)은 불러오지 않음
+        for row in ws.iter_rows(min_row=2, min_col=2):  # 첫번째 열(번호)은 불러오지 않음
             # 데이터 저장
             insert_data(db, row)
 
