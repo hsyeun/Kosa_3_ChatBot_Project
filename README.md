@@ -14,8 +14,8 @@ Moviin
 ## 제작 일정
 `2022.02.09` &nbsp;  주제 정하기  
 `2022.02.10  
-~ 2022.02.20 (11일)` &nbsp;  개발  
-`2022.02.21` &nbsp;  발표
+~ 2022.02.22 (13일)` &nbsp;  개발  
+`2022.02.23` &nbsp;  발표
 
 <br/>
 
@@ -35,6 +35,6 @@ Moviin
   * 프레임워크 : Flask
   * 크롤링 : BeatifulSoup, selenium
   * 알고리즘 : 양방향 LSTM
-  * 외부 API : 영화진흥위원회 API, Google geological API, Google places API, The Movie Database API
+  * 외부 API : 영화진흥위원회 API, The Movie Database API
 
 <br/>
