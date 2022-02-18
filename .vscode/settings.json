@@ -1,0 +1,7 @@
+{
+    "terminal.integrated.env.windows": {
+        "PATH": "${env:PATH};${env:CUDA_PATH};${env:CUDA_PATH}\\bin;D:\\Develop\\instantclient;",
+        "PYTHONPATH": "${env:PYTHONPATH};C:\\Users\\asj44\\Desktop\\Kosa_3_ChatBot_Project;"
+    }
+}
+
