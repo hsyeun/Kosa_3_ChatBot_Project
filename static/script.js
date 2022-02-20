@@ -350,6 +350,8 @@ var reactionInput = {
   }
 }
 
+// 2022-02-20 추가
+
 $(function(){
   var top10list = ''
   $.ajax({
@@ -396,3 +398,5 @@ function makeRankBox(top10list) {
 
   ticker()
 }
+
+// 2022-02-20 추가
