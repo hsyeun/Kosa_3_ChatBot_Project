@@ -71,23 +71,34 @@ body {
 
 .chatbot__head {
   background-color: #fff;
-  display: flex;
-  flex-flow: row nowrap;
   align-content: space-between;
   width: 100%;
+  vertical-align: middle;
   max-width: 35em;
   min-height: 10vh;
   max-height: 10vh;
   margin: 0 auto;
-  padding: 1em;
+  padding: 0.2em;
   /* padding-bottom: 0; */
   border-radius: 8px 8px 0px 0px;
+  border: 2px solid #2ecc71;
+  border-bottom: none;
 }
 .chatbot__head .title {
-  margin: 0 auto;
+  margin: 1vh auto;
+  height: 3vh;
   font-family: 'Rowdies', cursive;
-  font-size: 2em;
+  font-size: 4vh;
   color: #27ae60;
+  text-align: center;
+}
+
+.chatbot__head .rank {
+  display: block;
+  margin: 0.5vh auto;
+  font-size: 1vh;
+  color: black;
+  text-align: center;
 }
 
 .chatbot__overview {
@@ -98,7 +109,7 @@ body {
   min-height: 80vh;
   max-height: 80vh;
   margin: 0 auto;
-  padding: 1em;
+  padding: 0;
   padding-bottom: 0;
 }
 
@@ -111,8 +122,11 @@ body {
   overflow-x: hidden;
   width: 100%;
   max-width: 35em;
-  max-height: 75vh;
+  max-height: 80vh;
   margin: 0 auto;
+  background-color: #333333;  
+  border-left: 2px solid #2ecc71;
+  border-right: 2px solid #2ecc71;
 }
 .chatlist .userInput, .chatlist .bot__output {
   padding: 0.85em;
@@ -207,9 +221,13 @@ body {
   width: 80%;
   max-width: 35em;
   margin: 0 auto;
-  padding-top: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   font-size: 1em;
   font-family: 'Noto Sans KR', sans-serif;
+  background-color: #333333;
+  border: 2px solid #2ecc71;
+  border-top: none;
 }
 @media screen and (max-width: 29em) {
   #chatform {
@@ -218,9 +236,9 @@ body {
 }
 
 .chatbox-area {
-  margin: 0 auto;
+  margin: 0 0;
   position: relative;
-  bottom: 0;
+  height: 0;
   height: auto;
   width: 100%;
 }
@@ -311,3 +329,39 @@ input[type=submit]:hover {
 ::-webkit-scrollbar-thumb {
   background: rgba(0, 0, 0, 0.3);
 }
+
+/* 2022-02-20 추가 */
+.rank-box {
+  margin : 0 auto;
+	padding: 0 5px;
+	height: 3vh;
+  width: 28em;
+	overflow: hidden;
+	font-family: Gulim;
+	font-size: 15pt;
+  text-align: center;	
+  background-color: white;
+  border: 2px solid #2ecc71;
+}
+.rank-box ul,
+.rank-box li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+#rank {
+  float: left;
+  width: 100%;
+}
+
+#chatform {  
+  border: 2px solid #2ecc71;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+/* 2022-02-20 추가 */
