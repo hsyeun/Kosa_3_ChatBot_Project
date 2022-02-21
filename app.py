@@ -73,10 +73,10 @@ def query(bot_type):
 def send_answer():
       
       body = request.get_json()
+
+      ret = get_answer_from_engine(body['question'])      
+      answer = ret['Answer']
       
-      ret = get_answer_from_engine(body['question'])
-      
-      answer = json.loads(ret)['Answer']
       return make_response(answer)
 
 @app.route('/movie/rank', methods=["GET"])
