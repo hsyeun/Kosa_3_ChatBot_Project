@@ -78,15 +78,15 @@ body {
   min-height: 10vh;
   max-height: 10vh;
   margin: 0 auto;
-  padding: 0.2em;
+  padding: 1em;
   /* padding-bottom: 0; */
   border-radius: 8px 8px 0px 0px;
-  border: 2px solid #2ecc71;
+  /* border: 2px solid #2ecc71; */
   border-bottom: none;
 }
 .chatbot__head .title {
-  margin: 1vh auto;
-  height: 3vh;
+  margin: 0 auto;
+  /* height: 3vh; */
   font-family: 'Rowdies', cursive;
   font-size: 4vh;
   color: #27ae60;
@@ -102,12 +102,12 @@ body {
 }
 
 .chatbot__overview {
-  background-color: #363636;
+  background-color: #1a1818;
   display: flex;
   flex-flow: row nowrap;
   align-content: space-between;
-  min-height: 80vh;
-  max-height: 80vh;
+  min-height: 75vh;
+  max-height: 75vh;
   margin: 0 auto;
   padding: 0;
   padding-bottom: 0;
@@ -124,9 +124,12 @@ body {
   max-width: 35em;
   max-height: 80vh;
   margin: 0 auto;
-  background-color: #333333;  
-  border-left: 2px solid #2ecc71;
-  border-right: 2px solid #2ecc71;
+  background-color: #363636;  
+  /* border: 2px solid #000; */
+  box-sizing: border-box;
+  /* border-left: 2px solid #2ecc71; */
+  /* border-right: 2px solid #2ecc71; */
+  padding: 5px;
 }
 .chatlist .userInput, .chatlist .bot__output {
   padding: 0.85em;
@@ -210,8 +213,9 @@ body {
   }
 }
 .block--background {
-  background-color: #363636;
+  background-color: #1a1818;
   width: 100vw;
+  /* padding-top: 10px; */
   /* height: 100vh; */
 }
 
@@ -226,7 +230,7 @@ body {
   font-size: 1em;
   font-family: 'Noto Sans KR', sans-serif;
   background-color: #333333;
-  border: 2px solid #2ecc71;
+  /* border: 2px solid #2ecc71; */
   border-top: none;
 }
 @media screen and (max-width: 29em) {
@@ -333,22 +337,28 @@ input[type=submit]:hover {
 /* 2022-02-20 추가 */
 .rank-box {
   margin : 0 auto;
-	padding: 0 5px;
-	height: 3vh;
+	height: 5.3vh;
   width: 28em;
 	overflow: hidden;
-	font-family: Gulim;
+	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 15pt;
   text-align: center;	
   background-color: white;
-  border: 2px solid #2ecc71;
+  border-top: 2px solid #2ecc71;
 }
 .rank-box ul,
 .rank-box li {
 	margin: 0;
-	padding: 0;
+  padding: 0;
 	list-style: none;
-  font-family: "Noto Sans KR", sans-serif;
+  /* font-family: "Noto Sans KR", sans-serif; */
+}
+.rank-box li{
+  padding: 5px;
+}
+.rank-box li a:hover{
+  color: #005D30;
+  font-weight: bold;
 }
 
 #rank {
