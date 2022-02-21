@@ -14,7 +14,7 @@ from models.ner.NerModel import NerModel
 p = Preprocess()
 
 # 의도 파악 모델
-intent = IntentModel(model_name='models/intent/cnn_model.h5', proprocess=p)
+intent = IntentModel(model_name='intent_model.h5', proprocess=p)
 
 # 개체명 인식 모델
 ner = NerModel(model_name='models/ner/ner_model.h5', proprocess=p)
@@ -38,17 +38,19 @@ def to_client(conn, addr, params):
 
 
         # json 데이터로 변환
-        recv_json_data = json.loads(read.decode())
+        recv_json_data = read.decode()
         print("데이터 수신 : ", recv_json_data)
-        query = recv_json_data['Query']
+        query = recv_json_data
 
         # 의도 파악
         intent_predict = intent.predict_class(query)
         intent_name = intent.labels[intent_predict]
+        print("의도 파악 완료")
 
         # 개체명 파악
         ner_predicts = ner.predict(query)
         ner_tags = ner.predict_tags(query)
+        print("개체명 파악 완료")
 
 
         # 답변 검색
@@ -62,7 +64,7 @@ def to_client(conn, addr, params):
             answer_image = None
 
         send_json_data_str = {
-            "Query" : query,
+            "query" : query,
             "Answer": answer,
             "AnswerImageUrl" : answer_image,
             "Intent": intent_name,

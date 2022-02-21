@@ -2,6 +2,7 @@
 <html lang="ko" ng-app='swankyChat' class="ng-scope">
 
 <head>
+
       <meta charset="UTF-8">
       <link rel="apple-touch-icon" type="image/png"
             href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
@@ -22,8 +23,9 @@
       <main class="page__main">
             <div class="block--background">
                   <div class="chatbot__head">
-                        <p class="title">Moviin</p>
+                        <div class="title">Moviin</div>
                   </div>
+                  <div class="rank-box"></div>
                   <div class="chatbot__overview">
                         <ul class="chatlist">
                               <li class="bot__output bot__output--standard">만나서 반가워요. 저는 <span class="title__green">Moviin</span> 입니다!</li>
@@ -42,15 +44,6 @@
                               <li class="bot__output bot__output--standard">어떤게 궁금하신가요? : )</li>
                         </ul>
                   </div>
-                  <!-- <div class="chatbot__overview">
-                        <ul class="chatlist">
-                              <li class="bot__output bot__output--standard">
-                                    <ul>
-                                          <li class="input__nested-list"></li>
-                                    </ul>
-                              </li>
-                        </ul>
-                  </div>-->
                   <div class="chatbox-area">
                         <form action="" id="chatform">
                               <textarea placeholder="질문해주세요!" class="chatbox" name="chatbox" resize: "none"

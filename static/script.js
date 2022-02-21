@@ -82,6 +82,10 @@ var checkInput = function(input) {
 			console.log("success");
       hasCorrectInput = true;
       botResponse(textVal);
+
+    if(input == "박스오피스") {
+      
+    }
 		}
 	}
   //When input is not in possibleInput
@@ -97,11 +101,11 @@ var checkInput = function(input) {
 
 function requestToServer(input){
     $.ajax({
-      url: 'http://127.0.0.1:5000/message',
+      url: 'http://localhost:5000/question',
       async: true,
       type: 'POST',
       data: JSON.stringify({
-        message: input
+        'question': input
       }),
       dataType: 'text',
       contentType: 'application/json; charset=euc-kr',
@@ -114,6 +118,17 @@ function requestToServer(input){
     })
 }
 
+/* function addBoxOffice() {
+  $.ajax({
+    type: 'GET',    
+    url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json',
+    key = 'f5eef3421c602c6cb7ea224104795888',
+    success: function(response) {
+      alert('ajax success')
+    }
+  })
+}
+ */
 
 // debugger;
 
@@ -333,4 +348,51 @@ var reactionInput = {
     animationCounter = 1;
     return
   }
+}
+
+$(function(){
+  var top10list = ''
+  $.ajax({
+    url: 'http://localhost:5000/movie/rank',
+    async: true,
+    type: 'GET',
+    dataType: 'json',
+    success: function (response) {
+      top10list = response
+      
+      makeRankBox(top10list)
+    },
+    error: function (e) {
+      botResponse('데이터 처리가 실패했습니다. 관리자에게 문의하세요.')
+    }
+  })  
+})
+
+function makeRankBox(top10list) {
+  var htmlStr= "";
+  htmlStr += "<ul id='rank'>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[0]['url'] + "'>1위. " +  top10list[0]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[1]['url'] + "'>2위. " +  top10list[1]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[2]['url'] + "'>3위. " +  top10list[2]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[3]['url'] + "'>4위. " +  top10list[3]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[4]['url'] + "'>5위. " +  top10list[4]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[5]['url'] + "'>6위. " +  top10list[5]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[6]['url'] + "'>7위. " +  top10list[6]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[7]['url'] + "'>8위. " +  top10list[7]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[8]['url'] + "'>9위. " +  top10list[8]['name'] + "</a></li>"
+  htmlStr += "<li class='rank-item'><a href='" +top10list[9]['url'] + "'>10위. " +  top10list[9]['name'] + "</a></li>"
+  
+  htmlStr += "</ul>"
+  $(".rank-box").html(htmlStr)
+
+  var ticker = function() {
+    timer = setTimeout(function() {
+    $('#rank li:first').animate( {marginTop: '-20px'}, 400, function() {
+      $(this).detach().appendTo('ul#rank').removeAttr('style');
+    });
+    ticker();
+    }, 2000);         
+  };
+
+  ticker()
 }
