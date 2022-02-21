@@ -20,7 +20,7 @@ Moviin
 <br/>
 
 ## 기능  
-  * 현재 영화 순위  
+  * 현재 영화 순위 메인에서 바로 보여주기
   * 위치 정보를 입력받아서 주변의 영화관 알려주기  
   * 영화 추천  
      - 재밌게 봤던 영화나 좋아하는 감독/배우등을 입력받아 비슷한 영화를 추천해줌.  
@@ -33,8 +33,7 @@ Moviin
   * 환경 : Github, vscode, HeidiSQL
   * 언어 : Python, MySQL, Html, CSS, Javascript...
   * 프레임워크 : Flask
-  * 크롤링 : BeatifulSoup, selenium
-  * 알고리즘 : 양방향 LSTM
-  * 외부 API : 영화진흥위원회 API, Google geological API, Google places API, The Movie Database API
+  * 크롤링 : BeatifulSoup -> 네이버 영화 정보, 네이버 영화 랭킹
+  * 알고리즘 : 양방향 LSTM  
 
 <br/>
