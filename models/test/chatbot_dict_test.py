@@ -1,7 +1,7 @@
 import pickle
 from utils.Preprocess import Preprocess
 
-f = open("./train_tools/dict/chatbot_dict1.bin", "rb")
+f = open("./train_tools/dict/chatbot_dict.bin", "rb")
 word_index = pickle.load(f)
 f.close()
 
@@ -12,6 +12,7 @@ p = Preprocess(userdic='./utils/user_dict.tsv')
 pos = p.pos(sent)
 
 keywords = p.get_keywords(pos, without_tag=True)
+
 for word in keywords:
   try:
     print(word, word_index[word])
