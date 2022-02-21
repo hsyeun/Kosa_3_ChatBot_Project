@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
-from tensorflow.keras.models import Model, load_model
-from tensorflow.keras import preprocessing
+from keras.models import Model, load_model
+from keras import preprocessing
 from konlpy.tag import Komoran
 
 

@@ -4,7 +4,7 @@ class FindAnswer:
 
     # 검색 쿼리 생성
     def _make_query(self, intent_name, ner_tags):
-        sql = "select * from chatbot_train_data"
+        sql = "select * from chatbot_qna_data"
         if intent_name != None and ner_tags == None:
             sql = sql + " where intent='{}' ".format(intent_name)
 
@@ -32,14 +32,14 @@ class FindAnswer:
             sql = self._make_query(intent_name, None)
             answer = self.db.select_one(sql)
 
-        return (answer['answer'], answer['answer_image'])
+        return (answer['rsp'])
 
     # NER 태그를 실제 입력된 단어로 변환
     def tag_to_word(self, ner_predicts, answer):
         for word, tag in ner_predicts:
 
             # 변환해야하는 태그가 있는 경우 추가
-            if tag == 'B_FOOD' or tag == 'B_DT' or tag == 'B_TI':
+            if tag == 'B_MWK' or tag == 'B_THR' or tag == 'B_LOC' or tag == 'B_GEN' or tag == 'B_TER':
                 answer = answer.replace(tag, word)
 
         answer = answer.replace('{', '')

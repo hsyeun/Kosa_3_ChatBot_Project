@@ -1,20 +1,20 @@
 # 필요한 모듈 임포트
 import pandas as pd
 import tensorflow as tf
-from tensorflow.keras import preprocessing
-from tensorflow.keras.models import Model
-from tensorflow.keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
+from keras import preprocessing
+from keras.models import Model
+from keras.layers import Input, Embedding, Dense, Dropout, Conv1D, GlobalMaxPool1D, concatenate
 
 
 # 데이터 읽어오기
-train_file = "split.xlsx"
+train_file = "의도파악/split.xlsx"
 data = pd.read_excel(train_file)
 queries = data['s'].tolist()
 intents = data['l'].tolist()
 
 from utils.Preprocess import Preprocess
-p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',
-               userdic='utils/user_dic.tsv')
+p = Preprocess(word2index_dic=r'C:\dev\Project_chatbot\Kosa_3_ChatBot_Project\train_tools\dict\chatbot_dict1.bin',
+               userdic=r'C:\dev\Project_chatbot\Kosa_3_ChatBot_Project\utils\user_dict.tsv')
 
 # 단어 시퀀스 생성
 sequences = []
@@ -27,7 +27,7 @@ for sentence in queries:
 
 # 단어 인덱스 시퀀스 벡터 ○2
 # 단어 시퀀스 벡터 크기
-from config.GlobalParams import MAX_SEQ_LEN
+from Config.GlobalParams import MAX_SEQ_LEN
 padded_seqs = preprocessing.sequence.pad_sequences(sequences, maxlen=MAX_SEQ_LEN, padding='post')
 
 # (105658, 15)
