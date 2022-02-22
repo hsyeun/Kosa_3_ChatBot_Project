@@ -15,10 +15,10 @@ p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',
                userdic='utils/user_dict.tsv')
 
 # 의도 파악 모델
-intent = IntentModel(model_name='./intent_model.h5', proprocess=p)
+intent = IntentModel(model_name='./intent_model.h5', preprocess=p)
 
 # 개체명 인식 모델
-ner = NerModel(model_name='./ner_model_hd.h5', proprocess=p)
+ner = NerModel(model_name='./ner_model_hd.h5', preprocess=p)
 
 
 def to_client(conn, addr, params):
