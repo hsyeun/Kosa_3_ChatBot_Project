@@ -346,7 +346,7 @@ $(function () {
       makeRankBox(top10list)
     },
     error: function (e) {
-      botResponse('데이터 처리에 실패했습니다. 관리자에게 문의하세요.')
+      botResponse('데이터 처리를 실패했습니다. 관리자에게 문의하세요.')
     }
   })
 })
