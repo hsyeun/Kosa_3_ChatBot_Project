@@ -1,5 +1,5 @@
 from utils.Preprocess import Preprocess
-from IntentModel import IntentModel
+from 의도파악 import IntentModel
 from konlpy.tag import Komoran
 komoran = Komoran(userdic='Data_Increase/user_dict(MvTitle).tsv')
 p=Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',

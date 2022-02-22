@@ -118,18 +118,6 @@ function requestToServer(input) {
   })
 }
 
-/* function addBoxOffice() {
-  $.ajax({
-    type: 'GET',    
-    url = 'http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json',
-    key = 'f5eef3421c602c6cb7ea224104795888',
-    success: function(response) {
-      alert('ajax success')
-    }
-  })
-}
- */
-
 // debugger;
 
 function botResponse(textVal) {
@@ -343,6 +331,8 @@ var reactionInput = {
   }
 }
 
+// 2022-02-20 추가
+
 $(function () {
   var top10list = ''
   $.ajax({
@@ -361,6 +351,7 @@ $(function () {
   })
 })
 
+// 2022-02-21 추가
 // 박스오피스 탑10 출력
 function makeRankBox(top10list) {
   var htmlStr = "";
@@ -413,4 +404,6 @@ function makeRankBox(top10list) {
   //   }, 2000);         
   // };
   // ticker()
+
+  // 2022-02-20,21 추가
 }
