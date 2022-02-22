@@ -1,3 +1,9 @@
+from bs4 import BeautifulSoup
+import requests
+import sys
+sys.path.append('.')
+import openpyxl
+
 def crowlmv():
     count=1
     wb=openpyxl.Workbook()
