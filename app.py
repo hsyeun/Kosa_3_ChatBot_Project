@@ -86,5 +86,4 @@ def get_top_10_list():
       return make_response(jsonify(top10list))
 
 if __name__ == '__main__':
-      # socketio.run(app)  # 웹소켓
       app.run(host='0.0.0.0', debug=True)
