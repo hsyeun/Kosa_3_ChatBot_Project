@@ -45,3 +45,29 @@ class FindAnswer:
         answer = answer.replace('{', '')
         answer = answer.replace('}', '')
         return answer
+    
+    def find_mvw_info(self, mvw):
+        sql = f"select * from movie_data where movie_title='{mvw}'"
+        print(sql)
+        ans = self.db.select_one(sql)
+        if ans is None:
+            return '찾으시는 영화정보가 없습니다.'
+        else:
+            return [ans['movie_title'],ans['genre'],ans['director'],ans['actor']]
+
+    def find_thr_info(self,thr):
+        loc_do = input('찾으시는 지역(도)을 알려주세요.\n>>>')
+        loc_si = input('찾으시는 지역(시)을 알려주세요.\n>>>')
+        if thr =='영화관':
+            sql_do = f"select * from theater_data where do='{loc_do}' and si='{loc_si}'"
+        else:
+            sql_do = f"select * from theater_data where do='{loc_do}' and si='{loc_si}'"
+        print(sql_do)
+        thr_list = self.db.select_all(sql_do)
+        if thr_list is None:
+            print('검색결과가 없습니다.')
+        else:
+            print('찾으시는 영화관 정보입니다.\n====================')
+            result = []
+            for i in thr_list:
+                print(i['theater_name'])
