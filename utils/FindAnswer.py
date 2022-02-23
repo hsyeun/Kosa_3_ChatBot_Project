@@ -58,16 +58,24 @@ class FindAnswer:
     def find_thr_info(self,thr):
         loc_do = input('찾으시는 지역(도)을 알려주세요.\n>>>')
         loc_si = input('찾으시는 지역(시)을 알려주세요.\n>>>')
-        if thr =='영화관':
-            sql_do = f"select * from theater_data where do='{loc_do}' and si='{loc_si}'"
-        else:
-            sql_do = f"select * from theater_data where do='{loc_do}' and si='{loc_si}'"
+        sql_do = f"select * from theater_data where do='{loc_do}' and si='{loc_si}'"
         print(sql_do)
         thr_list = self.db.select_all(sql_do)
         if thr_list is None:
             print('검색결과가 없습니다.')
+            return '검색결과가 없습니다.'
         else:
-            print('찾으시는 영화관 정보입니다.\n====================')
-            result = []
-            for i in thr_list:
-                print(i['theater_name'])
+            if len(thr_list)==1:
+                print('찾으시는 영화관 정보입니다.\n===========================')
+                print(thr_list[0]['theater_name'])
+                print(thr_list[0]['address'])
+                print(thr_list[0]['tell'])
+            else:
+                print(f'{len(thr_list)}개의 영화관이 검색되었습니다.')
+                for i in thr_list:
+                    print(i['theater_name'])
+                thr_name = input('찾으시는 영화관의 이름을 정확하게 입력해 주세요.\n>>>')
+                sql = f"select * from theater_data where do='{loc_do}' and si='{loc_si}' and theater_name='{thr_name}'"
+                result = self.db.select_all(sql)[0]
+                return [result['theater_name'],result['address'],result['tell']]
+            
