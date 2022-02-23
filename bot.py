@@ -11,14 +11,14 @@ from models.ner.NerModel import NerModel
 
 
 # 전처리 객체 생성
-p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict.bin',
+p = Preprocess(word2index_dic='train_tools/dict/chatbot_dict1.bin',
                userdic='utils/user_dict.tsv')
 
 # 의도 파악 모델
-intent = IntentModel(model_name='./intent_model.h5', preprocess=p)
+intent = IntentModel(model_name='./intent_model.h5', proprocess=p)
 
 # 개체명 인식 모델
-ner = NerModel(model_name='./ner_model_hd.h5', preprocess=p)
+ner = NerModel(model_name='./ner_model_hd.h5', proprocess=p)
 
 
 def to_client(conn, addr, params):
@@ -46,28 +46,38 @@ def to_client(conn, addr, params):
         # 의도 파악
         intent_predict = intent.predict_class(query)
         intent_name = intent.labels[intent_predict]
-        # print("의도 파악 완료")
+        print("의도 파악 완료"+intent_name)
 
         # 개체명 파악
         ner_predicts = ner.predict(query)
         ner_tags = ner.predict_tags(query)
-        # print("개체명 파악 완료")
+        print("개체명 파악 완료")
+        print(ner_predicts)
 
 
         # 답변 검색
         try:
             f = FindAnswer(db)
-            answer_text, answer_image = f.search(intent_name, ner_tags)
-            answer = f.tag_to_word(ner_predicts, answer_text)
+            answer_text = f.search(intent_name, ner_tags)
+            if intent_name == '영화문의':
+                title = [s for s in ner_predicts if 'B_TER' in s][0][0]
+                mvinfo = f.find_mvw_info(title)
+                print('제목 : '+mvinfo[0])
+                print('감독 : '+mvinfo[1])
+                print('장르 : '+mvinfo[2])
+                print('배우 : '+mvinfo[3])
+                answer = '제목 : '+mvinfo[0] + '\n감독 : '+mvinfo[1] + '\n장르 : '+mvinfo[2] + '\n배우 : '+mvinfo[3]
+            elif intent_name == '영화관문의':
+                thr_name = [s for s in ner_predicts if 'B_TER' in s][0][0]
+                answer = thr_name
+                thr_names = f.find_thr_info(thr_name)
 
         except:
             answer = "죄송해요 무슨 말인지 모르겠어요. 조금 더 공부 할게요."
-            answer_image = None
 
         send_json_data_str = {
             "query" : query,
             "Answer": answer,
-            "AnswerImageUrl" : answer_image,
             "Intent": intent_name,
             "NER": str(ner_predicts)
         }
