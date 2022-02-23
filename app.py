@@ -77,11 +77,6 @@ def send_answer():
       ret = get_answer_from_engine(body['question'])      
       answer = ret['Answer']
       
-<<<<<<< HEAD
-=======
-      ret = get_answer_from_engine(body['question'])      
-      answer = ret['Answer']
->>>>>>> bdd15cd9dd4c78faf2d2817b78971bf803c24842
       return make_response(answer)
 
 @app.route('/movie/rank', methods=["GET"])
