@@ -69,8 +69,8 @@ def to_client(conn, addr, params):
                 answer = '제목 : '+mvinfo[0] + '\n감독 : '+mvinfo[1] + '\n장르 : '+mvinfo[2] + '\n배우 : '+mvinfo[3]
             elif intent_name == '영화관문의':
                 thr_name = [s for s in ner_predicts if 'B_TER' in s][0][0]
-                answer = thr_name
-                thr_names = f.find_thr_info(thr_name)
+                thr_info = f.find_thr_info(thr_name)
+                answer = '영화관이름 : '+thr_info[0] + '\n주소 : '+thr_info[1] + '\n전화번호 : '+thr_info[2]
 
         except:
             answer = "죄송해요 무슨 말인지 모르겠어요. 조금 더 공부 할게요."
